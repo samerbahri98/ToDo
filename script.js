@@ -5,9 +5,9 @@ let tasksList = document.querySelector("#tasksList")
 
 //remove task
 function setDelete(){
-    let delTaskBtn = document.querySelectorAll(".delete")
-    for (let i = 0 ; i <delTaskBtn.length; i++){
-        delTaskBtn[i].addEventListener('click',function(e){
+    let deleteButtons = document.querySelectorAll(".delete")
+    deleteButtons.forEach(function(btn){
+        btn.addEventListener('click',function(e){
             if(e.target.className==="delete")
             {
                 e.target.parentNode.parentNode.id="removed"
@@ -15,8 +15,9 @@ function setDelete(){
                 tasksList.removeChild(removed)
             }
         })
-    }
+    })
 }
+
 setDelete()
 
 
