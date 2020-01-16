@@ -10,31 +10,39 @@
         <link rel="stylesheet" href="style.css">
     </head>
     <body>
-        <nav class="panel">
-            <p class="panel-heading">       
-                <label id="titleLabel">To-do app</label>
-                <span class="icon is-small" id="editTitleBtn">
-                    <i class="fa fa-pencil" id="editTitleBtn"></i>
-                </span>   
-            </p>
-            <div class="panel-block">
-                <p class="control has-icon">
-                    <input class="input is-small" id="taskText" type="text" placeholder="Task">
-                </p>
-            </div>
-            <div class="panel-block">
-                <div class="block">
-                    <a class="button is-primary is-outlined" id="addTask">Add task</a>
+        <div class="column">
+            <div class="container is-fluid">
+                <div class="notification">
+                    <h1 class="title">
+                        <label>Tasks</label> 
+                        <span class="icon is-small" id="editTitleBtn">
+                        <i class="fa fa-pencil" id="editTitleBtn"></i>
+                        </span>
+                    </h1>
+                    <div class="tasksList">
+                    </div>
+
+                    <div class="panel-block is-primary">
+                        <p class="control has-icon">
+                            <label>Add Task</label>
+                            <textarea  class="textarea is-small" name="taskContent" id="taskContent"></textarea>
+                            <input class="input is-small" type="text" placeholder="Responsible" id="responsible">
+                            <label>Priority:</label>
+                            <span class="select is-pulled-right is-small">
+                                <select id="priority">
+                                  <option>Low</option>
+                                  <option>Medium</option>
+                                  <option>High</option>
+                                  <option>Urgent</option>
+                                </select>
+                            </span>
+                            <button class="button is-primary is-outlined is-fullwidth" id="addTask">Add Task</button>
+                        </p>
+                    </div>
                 </div>
             </div>
-
-            <div id="tasksList">
-
-            </div>
-            <div class="panel-block">
-                <button class="button is-primary is-outlined is-fullwidth" id="clearAll">Clear ALL</button>
-            </div>
-        </nav>        
+        </div>
+        <script src="API.js"></script>
         <script src="script.js"></script>
     </body>
 </html>
