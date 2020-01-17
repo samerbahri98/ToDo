@@ -1,5 +1,9 @@
-.notVisible {
+.isDragging{
     display: none;
+}
+
+.isDraggedOn{
+    bottom:20px
 }
 
 .avatar{
