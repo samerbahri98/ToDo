@@ -139,14 +139,18 @@ let task = {
             if(destination.classList.contains("isDraggedOn")){
                 TasksList.forEach(function(draggedTask){
                     if(draggedTask.classList.contains("isDragging")){
-                        destination.parentNode.insertBefore(draggedTask,destination.nextSibling)
+                        destination.addEventListener("mousemove",task.getPosition)
+                        //destination.removeEventListener("mousemove",task.getPosition)
+                        
                     }
                 })
                 destination.classList.remove("isDraggedOn")
             }
         })
     },
-
+    getPosition:function(f){
+        console.log(f.offsetY)
+    },
     removeTask : function (){
         let TasksList = document.querySelectorAll(".Task")
         TasksList.forEach(function(Taskelem){
