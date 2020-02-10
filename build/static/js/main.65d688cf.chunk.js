@@ -1,0 +1,2 @@
+(this.webpackJsonpmultitask=this.webpackJsonpmultitask||[]).push([[0],{3:function(t,e,n){t.exports=n(8)},8:function(t,e,n){"use strict";n.r(e);var a=n(0),r=n.n(a),s=n(2);var c=function(){return r.a.createElement("div",{className:"App"},"Hi")};n.n(s).a.render(r.a.createElement(c,null),document.getElementById("root"))}},[[3,1,2]]]);
+//# sourceMappingURL=main.65d688cf.chunk.js.map

@@ -117,21 +117,6 @@ let task = {
             task.removeTask()
         })
 
-        //draggability
-        this.nodeName.addEventListener("drag",function(e){
-            e.target.classList.add("isDragging")
-        })
-        this.nodeName.addEventListener("dragend",function(e){
-            task.updateDisplay()
-            e.target.classList.remove("isDragging")
-        })
-        this.nodeName.addEventListener("dragenter",function(e){
-            e.target.classList.add("isDraggedOn")
-        })
-        this.nodeName.addEventListener("dragleave",function(e){
-            e.target.classList.remove("isDraggedOn")
-        })
-
     },
     updateDisplay: function(){
         let TasksList = document.querySelectorAll(".Task")
@@ -139,18 +124,14 @@ let task = {
             if(destination.classList.contains("isDraggedOn")){
                 TasksList.forEach(function(draggedTask){
                     if(draggedTask.classList.contains("isDragging")){
-                        destination.addEventListener("mousemove",task.getPosition)
-                        //destination.removeEventListener("mousemove",task.getPosition)
-                        
+                        destination.parentNode.insertBefore(draggedTask,destination.nextSibling)
                     }
                 })
                 destination.classList.remove("isDraggedOn")
             }
         })
     },
-    getPosition:function(f){
-        console.log(f.offsetY)
-    },
+
     removeTask : function (){
         let TasksList = document.querySelectorAll(".Task")
         TasksList.forEach(function(Taskelem){
@@ -159,9 +140,6 @@ let task = {
                 Taskelem.parentNode.removeChild(Taskelem)
             }
         })
-    },
-    isDroppedOn : function(){
-
     }
 
 }
