@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import Header from "./Components/Header/Header";
 import Tabs from "./Components/Tabs/Tabs";
 import Tasklist from "./Components/Tasklist/Tasklist";
+import './App.css'
+
 class App extends Component {
   state = {
     currentCat: "All",

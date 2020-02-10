@@ -9,12 +9,9 @@ export default class Task extends Component {
   update = () => {
     this.setState({ updateTask: true });
   };
-  cancelUpdate = () => {
-    this.setState({ updateTask: false });
-  };
-  delete = () => {
-    this.props.delete(this.props.obj.id);
-  };
+  submitUpdate = obj => this.props.submitUpdate(obj)
+  cancelUpdate = () => this.setState({ updateTask: false });
+  delete = () => this.props.delete(this.props.obj.id);
   render() {
     let C = "Task notification ";
     switch (this.props.obj.priority) {
@@ -32,16 +29,24 @@ export default class Task extends Component {
         break;
     }
     return (
-      <div className={C} onClick={this.update}>
-        {this.state.updateTask? (
-          <TaskUpdate 
-          allowedCat={this.props.allowedCat} 
-          cancelUpdate={this.cancelUpdate}/>
+      <div className={C}>
+        {this.state.updateTask ? (
+          <TaskUpdate
+            allowedCat={this.props.allowedCat}
+            obj={this.props.obj}
+            cancelUpdate={this.cancelUpdate}
+            submitUpdate={this.submitUpdate}
+          ></TaskUpdate>
         ) : (
           <Fragment></Fragment>
         )}
         <button className="delete" onClick={this.delete}></button>
-        <label>{this.props.obj.name}</label>
+        <span className="icon is-left ">
+          <i className="fa fa-pencil target" onClick={this.update}></i>
+        </span>
+        <label onClick={this.update} className="target">
+          {this.props.obj.name}
+        </label>
         <br />
         <span className="tag">{this.props.obj.owner}</span>
         <br />

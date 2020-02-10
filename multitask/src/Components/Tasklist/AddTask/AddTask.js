@@ -18,6 +18,8 @@ export default class AddTask extends Component {
     let currentState = this.state.task
     currentState.submitDate = new Date ()
     currentState.done = false
+    currentState.priority= currentState.priority || 'Low'
+    currentState.category= currentState.category || this.props.allowedCat[0]
     this.setState({task : currentState})
     this.props.submitAdd(this.state.task)
     this.cancelAdd()
@@ -94,8 +96,8 @@ export default class AddTask extends Component {
                 <label>Category:</label>
                 <span className="select is-small">
                   <select id="priority" onChange={this.CategoryOnChange}>
-                    {this.props.allowedCat.map(elem => (
-                      <option className="selection">{elem}</option>
+                    {this.props.allowedCat.map((elem, index)=> (
+                      <option className="selection" key={index}>{elem}</option>
                     ))}
                   </select>
                 </span>

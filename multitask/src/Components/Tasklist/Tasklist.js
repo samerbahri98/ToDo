@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from "react";
 import Task from "./Task/Task";
 import Edits from "./Edits/Edits";
-import AddTask from "./AddTask/AddTask.js"
+import AddTask from "./AddTask/AddTask.js";
 
 export default class Tasklist extends Component {
   state = {
@@ -63,12 +63,24 @@ export default class Tasklist extends Component {
     }
   };
 
-  displayAdd= () => this.setState({AddTask: true})
-  cancelAdd= () => this.setState({AddTask: false})
-  submitAdd= (task) => {
+  displayAdd = () => this.setState({ AddTask: true });
+  cancelAdd = () => this.setState({ AddTask: false });
+  submitAdd = task => {
+    let currentState = this.state.tasksArray;
+    task.id = `ta${currentState.length + 1}`;
+    currentState.push(task);
+    this.setState({ tasksArray: currentState });
+    console.log(this.state);
+  };
+
+  submitUpdate = (obj) => {
     let currentState= this.state.tasksArray
-    currentState.push(task)
-    this.setState({tasksArray:currentState})
+    currentState.forEach(elem => {
+      if(elem.id===obj.id){
+        elem=obj
+      }
+    })
+    this.setState({ tasksArray: currentState });
   }
   render() {
     return (
@@ -76,16 +88,27 @@ export default class Tasklist extends Component {
         {this.state.tasksArray.map(elem =>
           (this.props.cat === "All" || this.props.cat === elem.category) &&
           elem.done === false ? (
-            <Task key={elem.id} obj={elem} delete={this.delete}  allowedCat= {this.props.allowedCat}/>
+            <Task
+              key={elem.id}
+              obj={elem}
+              delete={this.delete}
+              allowedCat={this.props.allowedCat}
+              submitUpdate={this.submitUpdate}
+            />
           ) : (
             <Fragment key={elem.id}></Fragment>
           )
         )}
-        {this.state.AddTask
-        ?(<AddTask cancelAdd={this.cancelAdd} submitAdd={this.submitAdd} allowedCat= {this.props.allowedCat}/>)
-        :(<Fragment />)
-        }
-        <Edits deleteAll={this.deleteAll} displayAdd={this.displayAdd}/>
+        {this.state.AddTask ? (
+          <AddTask
+            cancelAdd={this.cancelAdd}
+            submitAdd={this.submitAdd}
+            allowedCat={this.props.allowedCat}
+          />
+        ) : (
+          <Fragment />
+        )}
+        <Edits deleteAll={this.deleteAll} displayAdd={this.displayAdd} />
       </div>
     );
   }
