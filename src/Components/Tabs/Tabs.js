@@ -11,18 +11,18 @@ class Tabs extends Component {
         active: true,
         deleted: false
       },
-      {
-        id: "cat1",
-        name: "market",
-        active: false,
-        deleted: false
-      },
-      {
-        id: "cat2",
-        name: "school",
-        active: false,
-        deleted: false
-      }
+      // {
+      //   id: "cat1",
+      //   name: "market",
+      //   active: false,
+      //   deleted: false
+      // },
+      // {
+      //   id: "cat2",
+      //   name: "school",
+      //   active: false,
+      //   deleted: false
+      // }
     ],
     AddCategory: {
       class: "modal",

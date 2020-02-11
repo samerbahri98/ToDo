@@ -6,33 +6,33 @@ import AddTask from "./AddTask/AddTask.js";
 export default class Tasklist extends Component {
   state = {
     tasksArray: [
-      {
-        id: "ta1",
-        name: "Calculus homework",
-        owner: "samer",
-        priority: "Urgent",
-        category: "school",
-        deadline: new Date("May 09, 2020"),
-        done: false
-      },
-      {
-        id: "ta2",
-        name: "buy chicken",
-        owner: "samer",
-        priority: "Low",
-        category: "market",
-        deadline: new Date("May 10, 2020"),
-        done: false
-      },
-      {
-        id: "ta3",
-        name: "E100",
-        owner: "samer",
-        priority: "Medium",
-        category: "school",
-        deadline: new Date("May 10, 2020"),
-        done: false
-      }
+      // {
+      //   id: "ta1",
+      //   name: "Calculus homework",
+      //   owner: "samer",
+      //   priority: "Urgent",
+      //   category: "school",
+      //   deadline: new Date("May 09, 2020"),
+      //   done: false
+      // },
+      // {
+      //   id: "ta2",
+      //   name: "buy chicken",
+      //   owner: "samer",
+      //   priority: "Low",
+      //   category: "market",
+      //   deadline: new Date("May 10, 2020"),
+      //   done: false
+      // },
+      // {
+      //   id: "ta3",
+      //   name: "E100",
+      //   owner: "samer",
+      //   priority: "Medium",
+      //   category: "school",
+      //   deadline: new Date("May 10, 2020"),
+      //   done: false
+      // }
     ],
     AddTask: false
   };
@@ -73,16 +73,33 @@ export default class Tasklist extends Component {
     console.log(this.state);
   };
 
-  submitUpdate = (obj) => {
-    let currentState= this.state.tasksArray
+  submitUpdate = obj => {
+    let currentState = this.state.tasksArray;
     currentState.forEach(elem => {
-      if(elem.id===obj.id){
-        elem=obj
+      if (elem.id === obj.id) {
+        elem = obj;
       }
-    })
+    });
     this.setState({ tasksArray: currentState });
-  }
+  };
   render() {
+    // let currentState = this.state.tasksArray;
+
+    // currentState.forEach(elem => {
+    //   let Breac;
+    //   let check;
+    //   try {
+    //     this.props.allowedCat.forEach(cat => {
+    //       check = elem.category === cat;
+    //       if (check) throw Breac;
+    //     });
+    //   } catch (e) {
+    //     if (e !== Breac) throw e;
+    //   }
+    //   elem.done = check;
+      
+    // });
+    // this.setState({ tasksArray: currentState });
     return (
       <div className="tasksList">
         {this.state.tasksArray.map(elem =>

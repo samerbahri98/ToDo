@@ -7,7 +7,7 @@ import './App.css'
 class App extends Component {
   state = {
     currentCat: "All",
-    allowedCat:['school','market']
+    allowedCat:[]
   };
 
   update = cat => {
