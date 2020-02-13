@@ -23,7 +23,7 @@ class App extends Component {
         <Tabs update={this.update} allowedCat= {this.allowedCat}/>
         <div className="container is-fluid">
           <div className="notification">
-            <Tasklist cat={this.state.currentCat} allowedCat= {this.state.allowedCat}/>
+            <Tasklist currentCat={this.state.currentCat} allowedCat= {this.state.allowedCat}/>
           </div>
         </div>
       </div>

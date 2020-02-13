@@ -50,12 +50,12 @@ export default class Tasklist extends Component {
   deleteAll = () => {
     if (
       window.confirm(
-        `do you want to delete all the tasks for ${this.props.cat} category?`
+        `do you want to delete all the tasks for ${this.props.currentCat} category?`
       )
     ) {
       let stateUpdate = this.state.tasksArray;
       stateUpdate.forEach(elem => {
-        if (this.props.cat === elem.category || this.props.cat === "All") {
+        if (this.props.currentCat === elem.category || this.props.currentCat === "All") {
           elem.done = true;
         }
       });
@@ -70,7 +70,6 @@ export default class Tasklist extends Component {
     task.id = `ta${currentState.length + 1}`;
     currentState.push(task);
     this.setState({ tasksArray: currentState });
-    console.log(this.state);
   };
 
   submitUpdate = obj => {
@@ -103,7 +102,7 @@ export default class Tasklist extends Component {
     return (
       <div className="tasksList">
         {this.state.tasksArray.map(elem =>
-          (this.props.cat === "All" || this.props.cat === elem.category) &&
+          (this.props.currentCat === "All" || this.props.currentCat === elem.category) &&
           elem.done === false ? (
             <Task
               key={elem.id}
@@ -121,6 +120,7 @@ export default class Tasklist extends Component {
             cancelAdd={this.cancelAdd}
             submitAdd={this.submitAdd}
             allowedCat={this.props.allowedCat}
+            currentCat={this.props.currentCat}
           />
         ) : (
           <Fragment />

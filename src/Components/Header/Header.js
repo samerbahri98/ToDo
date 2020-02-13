@@ -5,12 +5,12 @@ export default function Header() {
     <nav className="nav">
       <div className="nav-left">
         <a className="nav-item">
-          <p className="title">Multitask Manager</p>
+          <p className="title">Multitasker</p>
         </a>
       </div>
 
       <div className="nav-center">
-        <a className="nav-item">
+        <a className="nav-item" href="https://github.com/samerbahri98/ToDo" target="_blank">
           <span className="icon">
             <i className="fa fa-github"></i>
           </span>
@@ -29,9 +29,9 @@ export default function Header() {
       </span>
 
       <div className="nav-right nav-menu">
-        <a className="nav-item">Home</a>
-        <a className="nav-item">Documentation</a>
-        <a className="nav-item">Blog</a>
+        <a className="nav-item">App</a>
+        <a className="nav-item">Documentations</a>
+        <a className="nav-item">About</a>
       </div>
     </nav>
   );

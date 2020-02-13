@@ -2,20 +2,18 @@ import React, { Component, Fragment } from "react";
 
 export default class Tab extends Component {
   select = event => {
-    this.props.activate(this.props.id);
+    this.props.activate(this.props.obj.id);
   };
   remove = () => {
-    this.props.removeTab(this.props.id);
-    if ( window.confirm( `Do you want to delete all the ${this.props.name} Category?`) )
+    if ( window.confirm( `Do you want to delete all the ${this.props.obj.name} Category?`) )
     {
-      this.props.removeTab(this.props.id);
-      this.props.activate("cat0");
+      this.props.removeTab(this.props.obj.id);
     }
   };
   render() {
     return (
       <a onClick={this.select} className={this.props.active}>
-        {this.props.name === "All" ? (
+        {this.props.obj.name === "All" ? (
           <Fragment></Fragment>
         ) : (
           <button
@@ -24,7 +22,7 @@ export default class Tab extends Component {
             onClick={this.remove}
           ></button>
         )}
-        {this.props.name}
+        {this.props.obj.name}
       </a>
     );
   }

@@ -21,3 +21,6 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# project
+/src/Components/Tasklist/AddTask/AddTask2[canceled].js

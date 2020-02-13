@@ -56,7 +56,7 @@ class Tabs extends Component {
   submitAdd = Category => {
     let stateUpdate = this.state.categoriesArray;
     let newCat = {
-      id: `cat ${stateUpdate.length}`,
+      id: `cat${stateUpdate.length}`,
       name: Category,
       active: false,
       deleted: false
@@ -65,12 +65,13 @@ class Tabs extends Component {
     this.setState({ categoriesArray: stateUpdate });
     let array = []
     this.state.categoriesArray.forEach(elem => {
-      if(elem.deleted===false){
+      if(elem.deleted===false && elem.name!=="All"){
         array.push(elem.name)
       }
     })
     this.props.allowedCat(array)
     this.cancelAdd();
+    this.activate(newCat.id)
   };
 
   removeTab = id => {
@@ -81,6 +82,13 @@ class Tabs extends Component {
       }
     });
     this.setState({ categoriesArray: stateUpdate });
+    let array = []
+    this.state.categoriesArray.forEach(elem => {
+      if(elem.deleted===false && elem.name!=="All"){
+        array.push(elem.name)
+      }
+    })
+    this.props.allowedCat(array)
   };
 
   render() {
@@ -97,8 +105,7 @@ class Tabs extends Component {
           ) : (
             <Tab
               key={elem.id}
-              id={elem.id}
-              name={elem.name}
+              obj={elem}
               update={this.update}
               activate={this.activate}
               active={elem.active ? "is-active" : ""}

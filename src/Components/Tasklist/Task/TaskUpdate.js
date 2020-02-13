@@ -42,6 +42,7 @@ export default class AddTask extends Component {
     this.setState({ task: currentState });
   };
 
+
   render() {
     return (
       <div className="modal is-active">
@@ -63,6 +64,7 @@ export default class AddTask extends Component {
                   name="taskContent"
                   id="taskContent"
                   placeholder="Task..."
+                  style={{ resize: "none" }}
                   onChange={this.taskOnChange}
                   defaultValue={this.props.obj.name}
                 ></textarea>
@@ -76,7 +78,11 @@ export default class AddTask extends Component {
                 />
                 <label>Priority:</label>
                 <span className="select is-small">
-                  <select id="priority" onChange={this.priorityOnChange} defaultValue={this.props.obj.priority}>
+                  <select
+                    id="priority"
+                    onChange={this.priorityOnChange}
+                    defaultValue={this.props.obj.priority}
+                  >
                     <option className="selection">Low</option>
                     <option className="selection">Medium</option>
                     <option className="selection">High</option>
@@ -87,7 +93,11 @@ export default class AddTask extends Component {
 
                 <label>Category:</label>
                 <span className="select is-small">
-                  <select id="priority" onChange={this.CategoryOnChange} defaultValue={this.props.obj.category}>
+                  <select
+                    id="priority"
+                    onChange={this.CategoryOnChange}
+                    defaultValue={this.props.obj.category}
+                  >
                     {this.props.allowedCat.map(elem => (
                       <option className="selection">{elem}</option>
                     ))}

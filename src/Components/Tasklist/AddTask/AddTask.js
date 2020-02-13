@@ -19,7 +19,7 @@ export default class AddTask extends Component {
     currentState.submitDate = new Date ()
     currentState.done = false
     currentState.priority= currentState.priority || 'Low'
-    currentState.category= currentState.category || this.props.allowedCat[0]
+    currentState.category= currentState.category || this.props.currentCat
     this.setState({task : currentState})
     this.props.submitAdd(this.state.task)
     this.cancelAdd()
@@ -56,6 +56,7 @@ export default class AddTask extends Component {
   }
 
 
+
   render() {
     return (
       <div className="modal is-active">
@@ -70,6 +71,7 @@ export default class AddTask extends Component {
               <p className="control has-icon">
                 <textarea
                   className="textarea is-small"
+                  style={{resize : "none"}}
                   name="taskContent"
                   id="taskContent"
                   placeholder="Task..."
@@ -93,14 +95,19 @@ export default class AddTask extends Component {
                 </span>
                 <br />
 
-                <label>Category:</label>
+                <label>Category: </label>
+
+                {this.props.allowedCat.length===0
+                  ?(<a className="target is-small" onClick={this.cancelAdd}>Please add a Category first</a>)
+                  :(
                 <span className="select is-small">
-                  <select id="priority" onChange={this.CategoryOnChange}>
+                  <select id="priority" onChange={this.CategoryOnChange} >
                     {this.props.allowedCat.map((elem, index)=> (
-                      <option className="selection" key={index}>{elem}</option>
+                      <option className="selection" selected={this.props.currentCat===elem} key={index}>{elem}</option>
                     ))}
                   </select>
                 </span>
+                )}
                 <br />
                 <label>Deadline:</label>
                 <input type="date" className="is-small" onChange={this.deadlineOnChange}/>
